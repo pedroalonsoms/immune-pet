@@ -9,15 +9,42 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            Image("bg")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack(alignment: .leading) {
+                Text("Welcome to")
+                    .font(.system(size: 30))
+                    .foregroundColor(.white)
+                    .bold()
+                    .padding(.top,150)
+                Text("ImmunePet")
+                    .font(.system(size: 50))
+                    .foregroundColor(.white)
+                    .bold()
+                Spacer()
+                
+                Button(action: start){
+                    Text("Start")
+                        .font(.system(size: 40))
+                        .foregroundColor(.white)
+                        .bold()
+                        .padding(.bottom,140)
+                    
+                }
+            }
+            .padding()
         }
-        .padding()
     }
-}
+    func start() {
+            print("Start button tapped")
+        }
+    }
+
+
 
 #Preview {
     ContentView()
