@@ -19,21 +19,69 @@ struct AllVaccinesView: View {
     
     //---------------------------------------------------------------
     var body: some View {
-        // para la lista de las vaccines: https://www.hackingwithswift.com/articles/216/complete-guide-to-navigationview-in-swiftui
-        NavigationStack{
-                List(items){
-                    item in NavigationLink(destination: SingleVaccineView(item: item)){
-                        Text(item.name)}
+        NavigationStack {
+            VStack() {
+                HStack() {
+                    Image("dog-paw")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 30)
+                    Spacer()
+                    Image("dog-face")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 30)
                 }
-            .navigationTitle("My pet's vaccines")
-        }
-        Button("New Vaccine"){
-            viewModel.newVaccineView = true
-        }
-        
-        // info de esto aquí: https://developer.apple.com/documentation/swiftui/view/sheet(ispresented:ondismiss:content:) (video)
-        .sheet(isPresented: $viewModel.newVaccineView) {
-            NewVaccineView(newVaccineDone: $viewModel.newVaccineView)
+                .padding(12)
+                .background(Color(hex: "#F6A850"))
+                .cornerRadius(40)
+                Spacer()
+                    .frame(height: 30)
+                
+                ForEach(items) { item in
+                    NavigationLink(destination: SingleVaccineView(item: item)) {
+                        HStack {
+                            Image("row-decorator")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height:40)
+                            Text(item.name)
+                                .tint(Color.black)
+                                .fontWeight(.bold)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.title)
+                                .foregroundColor(Color(hex: "#F6A850"))
+                                .padding(.trailing, 10)
+                        }
+                        .background(Color.white)
+                        .cornerRadius(20)
+                        .shadow(color: .gray, radius: 10, x: 3, y: 3)
+                    }
+                    Spacer()
+                        .frame(height: 30)
+                }
+                
+                Spacer()
+                Button("ADD NEW"){
+                    viewModel.newVaccineView = true
+                }
+                .padding(10)
+                .background(Color(hex: "#F6A850"))
+                .tint(Color.white)
+                .fontWeight(.bold)
+                .cornerRadius(18)
+                .font(.system(size: 22))
+                .sheet(isPresented: $viewModel.newVaccineView) {
+                    NewVaccineView(newVaccineDone: $viewModel.newVaccineView)
+                }
+            }
+            .background(Image("white-bg-pets"))
+            .padding(28)
         }
     }
+}
+
+#Preview {
+    AllVaccinesView()
 }
