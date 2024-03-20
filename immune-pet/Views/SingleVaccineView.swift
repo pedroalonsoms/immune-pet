@@ -9,72 +9,69 @@ import SwiftUI
 
 struct SingleVaccineView: View {
     var item: Vaccine
-    @State var showingBottomSheet = false
-    @State var dates: [String] = ["March 13, 2024", "April 16, 2024", "August 21, 2024"]
+    @State var dates: [String] = [""]
     
-    var body: some View {
-        
-        VStack {
-            Button("Mas") {
-                showingBottomSheet.toggle()
-            }
-            .buttonStyle(.borderedProminent)
-        }
-        .padding()
-        .sheet(isPresented: $showingBottomSheet) {
-            BottomSheetView(dates: $dates)
-                .presentationDetents([.medium, .large])
-                .presentationBackground(Color(hex: "F6A850"))
-        }
+    
+    func formatDate(_ date: Double) -> String{
+        let new_date = Date(timeIntervalSince1970: date)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy, hh:mm"
+        return formatter.string(from: new_date)
     }
-}
-
-struct BottomSheetView: View {
-    @Binding var dates: [String]
     
     var body: some View {
-        VStack(spacing: 10) {
-            Text("RABIES VACCINE")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
+        ZStack{
+            Color(hex:"F6A850")
+                .ignoresSafeArea()
+            VStack(spacing: 10) {
+                Text(item.name)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
                 
-            Text("Rabies is a deadly viral disease that affects the cnetral nervous system of mammals, including humans. It is typically transmitted through the bite of an infected animal, most commonly through the saliva of a rabid animal. Once symptoms appear, rabies is almost fatal.")
-                .foregroundColor(.white)
-            
-            Text("NEXT SHOT")
-                .fontWeight(.bold)
-                .multilineTextAlignment(.trailing)
-                .foregroundColor(.white)
-                .font(.headline)
-            
-            ForEach(dates.indices, id: \.self) { index in
-                HStack {
-                    TextField("Enter date", text: $dates[index])
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .foregroundColor(.black)
-                        .cornerRadius(30)
-                    Button(action: {
-                        // Elimina la fecha correspondiente cuando se presiona el botón de eliminar
-                        dates.remove(at: index)
-                    }) {
-                        Image(systemName: "minus.circle")
-                            .foregroundColor(.red)
+                Text(item.description)
+                    .foregroundColor(.white)
+                
+                Text("NEXT SHOT")
+                    .fontWeight(.heavy)
+                    .multilineTextAlignment(.trailing)
+                    .foregroundColor(.white)
+                    .font(.headline)
+                
+                Rectangle()
+                    .fill(Color.white)
+                    .cornerRadius(30)
+                    .frame(height: 40) // Ajusta la altura del Rectangle según sea necesario
+                    .overlay(
+                        Text("\(formatDate(item.date))") // Llamada a la función para formatear la fecha
+                            .foregroundColor(.black)
+                        
+                    )
+                
+                ForEach(dates.indices, id: \.self) { index in
+                    HStack {
+                        TextField("Enter next shot date", text: $dates[index])
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .foregroundColor(.black)
+                            .cornerRadius(30)
+                            .frame(maxWidth: .infinity)
+                            .multilineTextAlignment(.center)
                     }
                 }
+                
+                Button(action: {
+                    // Agrega una nueva fecha cada vez que se presiona el botón de más
+                    dates.append("New Date")
+                }) {
+                    Image(systemName: "plus")
+                        .foregroundColor(.black)
+                }
             }
-            
-            Button(action: {
-                // Agrega una nueva fecha cada vez que se presiona el botón de más
-                dates.append("New Date")
-            }) {
-                Image(systemName: "plus")
-                    .foregroundColor(.black)
-            }
+            .padding(40)
+            .background(Color(hex: "F6A850"))
         }
-        .padding()
-        .background(Color(hex: "F6A850"))
     }
+    
 }
 
 extension Color {
@@ -92,3 +89,6 @@ extension Color {
         self.init(red: red, green: green, blue: blue)
     }
 }
+
+
+
