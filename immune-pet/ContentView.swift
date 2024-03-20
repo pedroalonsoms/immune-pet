@@ -21,20 +21,35 @@ struct ContentView: View {
                     .foregroundColor(.white)
                     .bold()
                     .padding(.top,150)
+                    .padding(.leading, -60)
                 Text("ImmunePet")
                     .font(.system(size: 50))
                     .foregroundColor(.white)
                     .bold()
+                    .padding(.leading, -60)
                 Spacer()
                 
-                Button(action: start){
-                    Text("Start")
-                        .font(.system(size: 40))
-                        .foregroundColor(.white)
-                        .bold()
-                        .padding(.bottom,140)
-                    
+                VStack(alignment: .center){
+                    Button(action: start){
+                        Text("Start")
+                            .font(.system(size: 40))
+                            .foregroundColor(.white)
+                            .bold()
+                            .padding(.horizontal, 60)
+                            .padding(.vertical, 5)                            .background(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .fill(Color.orange))
+                            
+                        
+                        
+                    }
                 }
+                    .padding(.bottom, 140)
+                    .padding(.leading, 10)
+                    
+                    
+               
+                
             }
             .padding()
         }
