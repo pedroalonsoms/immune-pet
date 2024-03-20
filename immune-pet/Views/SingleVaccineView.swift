@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct SingleVaccineView: View {
+    var item: Vaccine
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        Text(item.name)
+        Text(item.description)
+        //para convertir el tiempo: https://medium.com/@edabdallamo/swift-tips-convert-unix-time-epoch-to-date-670987ed29a6
+        let new_date = Date(timeIntervalSince1970: item.date)
+        Text("\(new_date)")
+        
     }
-}
-
-#Preview {
-    SingleVaccineView()
 }
