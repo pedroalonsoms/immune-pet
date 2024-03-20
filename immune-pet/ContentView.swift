@@ -31,33 +31,30 @@ struct ContentView: View {
                 
                 VStack(alignment: .center){
                     Button(action: start){
-                        Text("Start")
+                        Text("START")
                             .font(.system(size: 40))
                             .foregroundColor(.white)
                             .bold()
                             .padding(.horizontal, 60)
                             .padding(.vertical, 5)                            .background(
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .fill(Color.orange))
-                            
-                        
-                        
+                                RoundedRectangle(cornerRadius: 40)
+                                    .fill(Color.orange))
                     }
                 }
-                    .padding(.bottom, 140)
-                    .padding(.leading, 10)
-                    
-                    
-               
+                .padding(.bottom, 140)
+                .padding(.leading, 10)
+                
+                
+                
                 
             }
             .padding()
         }
     }
     func start() {
-            print("Start button tapped")
-        }
+        print("Start button tapped")
     }
+}
 
 
 
