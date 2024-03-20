@@ -12,6 +12,17 @@
 		09E4787A2BA9F5F80046DDCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E478792BA9F5F80046DDCE /* Assets.xcassets */; };
 		09E4787D2BA9F5F80046DDCE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E4787C2BA9F5F80046DDCE /* Preview Assets.xcassets */; };
 		09E478842BAA12890046DDCE /* VaccineList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E478832BAA12890046DDCE /* VaccineList.swift */; };
+		0F7B331A2BAB3960006234BD /* Vaccine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B33192BAB3960006234BD /* Vaccine.swift */; };
+		0F7B331C2BAB39D0006234BD /* AllVaccinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B331B2BAB39D0006234BD /* AllVaccinesView.swift */; };
+		0F7B331F2BAB3A84006234BD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 0F7B331E2BAB3A84006234BD /* FirebaseDatabase */; };
+		0F7B33212BAB3A84006234BD /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0F7B33202BAB3A84006234BD /* FirebaseDatabaseSwift */; };
+		0F7B33232BAB3A84006234BD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0F7B33222BAB3A84006234BD /* FirebaseFirestore */; };
+		0F7B33252BAB3A84006234BD /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0F7B33242BAB3A84006234BD /* FirebaseFirestoreSwift */; };
+		0F7B33272BAB3ABE006234BD /* NewVaccineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B33262BAB3ABE006234BD /* NewVaccineViewModel.swift */; };
+		0F7B33292BAB3AD8006234BD /* AllVaccinesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B33282BAB3AD8006234BD /* AllVaccinesViewModel.swift */; };
+		0F7B332B2BAB3B15006234BD /* SingleVaccineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B332A2BAB3B15006234BD /* SingleVaccineView.swift */; };
+		0F7B332D2BAB3B30006234BD /* NewVaccineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B332C2BAB3B30006234BD /* NewVaccineView.swift */; };
+		0F7B332F2BAB3BAE006234BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F7B332E2BAB3BAE006234BD /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +32,13 @@
 		09E478792BA9F5F80046DDCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09E4787C2BA9F5F80046DDCE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		09E478832BAA12890046DDCE /* VaccineList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineList.swift; sourceTree = "<group>"; };
+		0F7B33192BAB3960006234BD /* Vaccine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vaccine.swift; sourceTree = "<group>"; };
+		0F7B331B2BAB39D0006234BD /* AllVaccinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllVaccinesView.swift; sourceTree = "<group>"; };
+		0F7B33262BAB3ABE006234BD /* NewVaccineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVaccineViewModel.swift; sourceTree = "<group>"; };
+		0F7B33282BAB3AD8006234BD /* AllVaccinesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllVaccinesViewModel.swift; sourceTree = "<group>"; };
+		0F7B332A2BAB3B15006234BD /* SingleVaccineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVaccineView.swift; sourceTree = "<group>"; };
+		0F7B332C2BAB3B30006234BD /* NewVaccineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVaccineView.swift; sourceTree = "<group>"; };
+		0F7B332E2BAB3BAE006234BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +46,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F7B33212BAB3A84006234BD /* FirebaseDatabaseSwift in Frameworks */,
+				0F7B331F2BAB3A84006234BD /* FirebaseDatabase in Frameworks */,
+				0F7B33232BAB3A84006234BD /* FirebaseFirestore in Frameworks */,
+				0F7B33252BAB3A84006234BD /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +75,10 @@
 		09E478742BA9F5F60046DDCE /* immune-pet */ = {
 			isa = PBXGroup;
 			children = (
+				0F7B332E2BAB3BAE006234BD /* GoogleService-Info.plist */,
+				0F7B33182BAB392D006234BD /* Models */,
+				0F7B33172BAB3923006234BD /* ViewModels */,
+				0F7B33162BAB3916006234BD /* Views */,
 				09E478752BA9F5F60046DDCE /* immune_petApp.swift */,
 				09E478772BA9F5F60046DDCE /* ContentView.swift */,
 				09E478832BAA12890046DDCE /* VaccineList.swift */,
@@ -68,6 +94,33 @@
 				09E4787C2BA9F5F80046DDCE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0F7B33162BAB3916006234BD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0F7B331B2BAB39D0006234BD /* AllVaccinesView.swift */,
+				0F7B332A2BAB3B15006234BD /* SingleVaccineView.swift */,
+				0F7B332C2BAB3B30006234BD /* NewVaccineView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0F7B33172BAB3923006234BD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0F7B33262BAB3ABE006234BD /* NewVaccineViewModel.swift */,
+				0F7B33282BAB3AD8006234BD /* AllVaccinesViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0F7B33182BAB392D006234BD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F7B33192BAB3960006234BD /* Vaccine.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +139,12 @@
 			dependencies = (
 			);
 			name = "immune-pet";
+			packageProductDependencies = (
+				0F7B331E2BAB3A84006234BD /* FirebaseDatabase */,
+				0F7B33202BAB3A84006234BD /* FirebaseDatabaseSwift */,
+				0F7B33222BAB3A84006234BD /* FirebaseFirestore */,
+				0F7B33242BAB3A84006234BD /* FirebaseFirestoreSwift */,
+			);
 			productName = "immune-pet";
 			productReference = 09E478722BA9F5F60046DDCE /* immune-pet.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +173,9 @@
 				Base,
 			);
 			mainGroup = 09E478692BA9F5F60046DDCE;
+			packageReferences = (
+				0F7B331D2BAB3A84006234BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 09E478732BA9F5F60046DDCE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -130,6 +192,7 @@
 			files = (
 				09E4787D2BA9F5F80046DDCE /* Preview Assets.xcassets in Resources */,
 				09E4787A2BA9F5F80046DDCE /* Assets.xcassets in Resources */,
+				0F7B332F2BAB3BAE006234BD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,9 +203,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F7B332B2BAB3B15006234BD /* SingleVaccineView.swift in Sources */,
 				09E478782BA9F5F60046DDCE /* ContentView.swift in Sources */,
+				0F7B33272BAB3ABE006234BD /* NewVaccineViewModel.swift in Sources */,
+				0F7B331A2BAB3960006234BD /* Vaccine.swift in Sources */,
 				09E478762BA9F5F60046DDCE /* immune_petApp.swift in Sources */,
 				09E478842BAA12890046DDCE /* VaccineList.swift in Sources */,
+				0F7B331C2BAB39D0006234BD /* AllVaccinesView.swift in Sources */,
+				0F7B332D2BAB3B30006234BD /* NewVaccineView.swift in Sources */,
+				0F7B33292BAB3AD8006234BD /* AllVaccinesViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +415,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0F7B331D2BAB3A84006234BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.23.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0F7B331E2BAB3A84006234BD /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F7B331D2BAB3A84006234BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		0F7B33202BAB3A84006234BD /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F7B331D2BAB3A84006234BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		0F7B33222BAB3A84006234BD /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F7B331D2BAB3A84006234BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		0F7B33242BAB3A84006234BD /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F7B331D2BAB3A84006234BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 09E4786A2BA9F5F60046DDCE /* Project object */;
 }
