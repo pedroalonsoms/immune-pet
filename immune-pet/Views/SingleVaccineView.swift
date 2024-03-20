@@ -1,22 +1,15 @@
-//
-//  SingleVaccineView.swift
-//  immune-pet
-//
-//  Created by Paulina Covarrubias on 20/03/24.
-//
-
 import SwiftUI
 
 struct SingleVaccineView: View {
     var item: Vaccine
-    @State var dates: [String] = [""]
+    @State var dates: [Date] = [Date()]
+    @State private var selectedDate = Date()
+    @State private var showDatePicker = false
     
-    
-    func formatDate(_ date: Double) -> String{
-        let new_date = Date(timeIntervalSince1970: date)
+    func formatDate(_ date: Date) -> String{
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy, hh:mm"
-        return formatter.string(from: new_date)
+        return formatter.string(from: date)
     }
     
     var body: some View {
@@ -41,37 +34,38 @@ struct SingleVaccineView: View {
                 Rectangle()
                     .fill(Color.white)
                     .cornerRadius(30)
-                    .frame(height: 40) // Ajusta la altura del Rectangle según sea necesario
+                    .frame(height: 40) // Adjust the height of the Rectangle as needed
                     .overlay(
-                        Text("\(formatDate(item.date))") // Llamada a la función para formatear la fecha
+                        Text("\(formatDate(selectedDate))") // Call to the function to format the date
                             .foregroundColor(.black)
                         
                     )
                 
                 ForEach(dates.indices, id: \.self) { index in
-                    HStack {
-                        TextField("Enter next shot date", text: $dates[index])
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .foregroundColor(.black)
-                            .cornerRadius(30)
-                            .frame(maxWidth: .infinity)
-                            .multilineTextAlignment(.center)
-                    }
+                    DatePicker("", selection: $selectedDate, displayedComponents: .date)
+                    
+                        .frame(maxWidth: .infinity)
+                        .background(Color.white)
+                        .cornerRadius(30)
                 }
                 
                 Button(action: {
-                    // Agrega una nueva fecha cada vez que se presiona el botón de más
-                    dates.append("New Date")
+                    // Adds a new date every time the plus button is pressed
+                    dates.append(Date())
                 }) {
-                    Image(systemName: "plus")
-                        .foregroundColor(.black)
+                    Circle()
+                        .fill(Color.white)
+                        .frame(width: 35, height: 35)
+                        .overlay(
+                            Image(systemName: "plus")
+                                .foregroundColor(.black)
+                        )
                 }
             }
-            .padding(40)
+            .padding()
             .background(Color(hex: "F6A850"))
         }
     }
-    
 }
 
 extension Color {
@@ -89,6 +83,3 @@ extension Color {
         self.init(red: red, green: green, blue: blue)
     }
 }
-
-
-
