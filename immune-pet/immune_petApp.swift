@@ -15,7 +15,7 @@ struct immune_petApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            AllVaccinesView()
+            ContentView()
         }
     }
 }
