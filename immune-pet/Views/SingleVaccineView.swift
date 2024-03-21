@@ -2,13 +2,14 @@ import SwiftUI
 
 struct SingleVaccineView: View {
     var item: Vaccine
-    @State var dates: [Date] = [Date()]
+    @State var newDate: Date = Date()
     @State private var selectedDate = Date()
     @State private var showDatePicker = false
+    @StateObject var viewModel = NewVaccineViewModel()
     
     func formatDate(_ date: Date) -> String{
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy, hh:mm"
+        formatter.dateFormat = "MMM d, yyyy"
         return formatter.string(from: date)
     }
     
@@ -31,26 +32,30 @@ struct SingleVaccineView: View {
                     .foregroundColor(.white)
                     .font(.headline)
                 
-                Rectangle()
-                    .fill(Color.white)
-                    .cornerRadius(30)
-                    .frame(height: 40)
-                    .overlay(
-                        Text("\(formatDate(selectedDate))")
-                            .foregroundColor(.black)
-                    )
                 
-                ForEach(dates.indices, id: \.self) { index in
-                    DatePicker("   Next Shot", selection: $dates[index], displayedComponents: .date)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.white)
+                
+                ForEach(item.date, id: \.self) { date in
+                    Rectangle()
+                        .fill(Color.white)
                         .cornerRadius(30)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color(hex: "F6A850"))
+                        .frame(height: 40)
+                        .overlay(
+                            Text("\(formatDate(Date(timeIntervalSince1970: date)))")
+                                .foregroundColor(.black)
+                        )
                 }
                 
+                Spacer().frame(height: 50)
+                DatePicker("   Next Shot", selection: $newDate, displayedComponents: .date)
+                                        .frame(maxWidth: .infinity)
+                                        .background(Color.white)
+                                        .cornerRadius(30)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Color(hex: "F6A850"))
+                
+                
                 Button(action: {
-                    dates.append(Date())
+                    viewModel.addDate(documentID: item.id, newDate: newDate.timeIntervalSince1970)
                 }) {
                     Circle()
                         .fill(Color.white)
