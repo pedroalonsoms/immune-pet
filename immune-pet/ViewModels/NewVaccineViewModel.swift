@@ -26,6 +26,13 @@ class NewVaccineViewModel: ObservableObject{
             .setData(["id": newVaccine.id,
                       "name": newVaccine.name,
                       "description":newVaccine.description,
-                      "date":[newVaccine.date]])
+                      "date":newVaccine.date])
+    }
+    
+    func addDate(documentID: String, newDate: TimeInterval){
+        let db = Firestore.firestore()
+        db.collection("vaccines")
+            .document(documentID)
+            .updateData(["date":FieldValue.arrayUnion([newDate])])
     }
 }

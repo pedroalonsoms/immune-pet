@@ -43,7 +43,7 @@ struct NewVaccineView: View {
                 
                 // Calendar
                 Section {
-                    DatePicker("Date to be administered", selection: $viewModel.date)
+                    DatePicker("Date to be administered", selection: $viewModel.date, displayedComponents: .date)
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .accentColor(.orange)
                 }
