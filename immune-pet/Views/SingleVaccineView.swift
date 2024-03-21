@@ -27,34 +27,34 @@ struct SingleVaccineView: View {
                 
                 Text("NEXT SHOT")
                     .fontWeight(.heavy)
-                    .multilineTextAlignment(.trailing)
+                    .multilineTextAlignment(.leading)
                     .foregroundColor(.white)
                     .font(.headline)
                 
                 Rectangle()
                     .fill(Color.white)
                     .cornerRadius(30)
-                    .frame(height: 40) // Adjust the height of the Rectangle as needed
+                    .frame(height: 40)
                     .overlay(
-                        Text("\(formatDate(selectedDate))") // Call to the function to format the date
+                        Text("\(formatDate(selectedDate))")
                             .foregroundColor(.black)
-                        
                     )
                 
                 ForEach(dates.indices, id: \.self) { index in
-                    DatePicker("", selection: $selectedDate, displayedComponents: .date)
-                    
+                    DatePicker("   Next Shot", selection: $dates[index], displayedComponents: .date)
                         .frame(maxWidth: .infinity)
                         .background(Color.white)
                         .cornerRadius(30)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(hex: "F6A850"))
                 }
                 
                 Button(action: {
-                    // Adds a new date every time the plus button is pressed
                     dates.append(Date())
                 }) {
                     Circle()
                         .fill(Color.white)
+                        .shadow(color: .gray, radius: 10, x: 3, y: 3)
                         .frame(width: 35, height: 35)
                         .overlay(
                             Image(systemName: "plus")
@@ -62,11 +62,13 @@ struct SingleVaccineView: View {
                         )
                 }
             }
-            .padding()
+            .padding(33)
             .background(Color(hex: "F6A850"))
+            .background(Image("bg-02"))
         }
     }
 }
+
 
 extension Color {
     init(hex: String) {
@@ -83,3 +85,6 @@ extension Color {
         self.init(red: red, green: green, blue: blue)
     }
 }
+
+
+
