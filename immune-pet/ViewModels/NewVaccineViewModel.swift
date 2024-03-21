@@ -18,13 +18,14 @@ class NewVaccineViewModel: ObservableObject{
     
     func save(){
         let newId = UUID().uuidString
-        let newVaccine = Vaccine(id: newId, name: title, description: description, date: date.timeIntervalSince1970)
+        let newVaccine = Vaccine(id: newId, name: title, description: description, date: [date.timeIntervalSince1970])
+        
         let db = Firestore.firestore()
         db.collection("vaccines")
             .document(newId)
             .setData(["id": newVaccine.id,
                       "name": newVaccine.name,
                       "description":newVaccine.description,
-                      "date":newVaccine.date])
+                      "date":[newVaccine.date]])
     }
 }
