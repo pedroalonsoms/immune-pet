@@ -12,5 +12,5 @@ struct Vaccine:Codable, Identifiable{
     let id: String
     let name: String
     let description: String
-    let date: TimeInterval
+    let date: [TimeInterval]
 }
