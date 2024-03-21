@@ -1,44 +1,89 @@
-//
-//  NewVaccineView.swift
-//  immune-pet
-//
-//  Created by Paulina Covarrubias on 20/03/24.
-//
-
 import SwiftUI
+
 struct NewVaccineView: View {
     @StateObject var viewModel = NewVaccineViewModel()
     @Binding var newVaccineDone: Bool
     
     var body: some View {
         VStack(alignment: .center){
-            Form{
-                TextField("Name", text: $viewModel.title)
-                TextField("Description", text: $viewModel.description)
-                DatePicker("Date to be administered", selection: $viewModel.date)
-                    .datePickerStyle(GraphicalDatePickerStyle())
-                    .accentColor(.orange)
-                // botón para guardar cambios
-                Button(action:{
-                    viewModel.save() // llamamos a la función de save (ver NewVaccineViewModel)
-                    newVaccineDone = false
-                })
-                {
-                    VStack(alignment: .center){
-                        Text("ADD")
-                            .foregroundColor(.white)
-                            .padding(5) // para darle espacio al texto
-                    }
-                    .background(Color.orange)
-                    .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/) // default redondear esquinas
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/) // para centrarlo y que ocupe todo el espacio ... https://sarunw.com/posts/how-to-make-swiftui-view-fill-container-width-and-height/
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                }
+            HStack() {
+                Image("dog-paw")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 30)
+                Spacer()
+                Image("dog-face")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 30)
             }
-            .scrollContentBackground(.hidden) //para que el fondo se aplicara: https://stackoverflow.com/questions/57254461/how-to-change-the-background-color-for-a-form-in-swiftui#:~:text=You%20can%20use%20UITableView.,s%20background%20color%20to%20red.
+            .padding(10)
+            .background(Color(hex: "#F6A850"))
+            .cornerRadius(30)
+            .padding(.top, 10) // Adjust top padding
+            
+            Form{
+                // Name
+                Section(header: Text("Vaccine Name")) {
+                    TextField("", text: $viewModel.title)
+                }
+                .font(.system(size: 20))
+                .foregroundColor(.black)
+                .bold()
+                .padding(.horizontal, -20)
+                
+                // Description
+                Section(header: Text("Description")) {
+                    TextField("", text: $viewModel.description)
+                }
+                .font(.system(size: 20))
+                .foregroundColor(.black)
+                .bold()
+                .padding(.horizontal, -20)
+                
+                // Calendar
+                Section {
+                    DatePicker("Date to be administered", selection: $viewModel.date)
+                        .datePickerStyle(GraphicalDatePickerStyle())
+                        .accentColor(.orange)
+                }
+                // Button to save changes
+                .padding(.top,0)
+            }
+            .background(Color(hex: "#F6A850"))
+            .cornerRadius(20)
+            .scrollContentBackground(.hidden)
             .padding()
-            .background(Image("fondo")
-                .resizable()) //para la imagen usé esto: https://stackoverflow.com/questions/59102889/how-to-add-background-image-to-complete-view-in-swiftui
+            
+            
+            Button(action:{
+                viewModel.save()
+                newVaccineDone = false
+            }) {
+                Text("ADD")
+                    .font(.system(size: 40))
+                    .foregroundColor(.white)
+                    .bold()
+                    .padding(.horizontal, 50)
+                    .padding(.vertical, 2)
+                    .background(RoundedRectangle(cornerRadius: 40)
+                                    .fill(Color.orange))
+            }
+            .background(Color(hex: "#F6A850"))
+            .cornerRadius(20)
+            .font(.title)
         }
+        .background(
+            Image("fondo")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all) // Make the image cover the entire screen
+        )
+    }
+}
+
+struct NewVaccineView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewVaccineView(newVaccineDone: .constant(false))
     }
 }
