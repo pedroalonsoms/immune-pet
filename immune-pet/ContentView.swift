@@ -41,6 +41,7 @@ struct ContentView: View {
                                     RoundedRectangle(cornerRadius: 40)
                                         .fill(Color.orange))
                         }
+
                     }
                     .padding(.bottom, 140)
                     .padding(.leading, 10)
@@ -48,6 +49,9 @@ struct ContentView: View {
                 .padding()
             }
         }
+        .onAppear {
+                    NotificationManager.instance.solicitarAut()
+    }
     }
 }
 

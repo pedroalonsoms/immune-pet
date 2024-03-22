@@ -1,4 +1,46 @@
 import SwiftUI
+import UserNotifications
+
+class NotificationManager{
+    static let instance = NotificationManager()
+    func solicitarAut(){
+        let options: UNAuthorizationOptions = [ .alert, .sound, .badge]
+        UNUserNotificationCenter.current().requestAuthorization(options: options){(success,error) in
+            if let error = error{
+                print("ERROR")
+            }
+            else{
+                print("SUCCESS")
+            }
+        }
+    }
+    func agendarNotif() {
+        let contenido = UNMutableNotificationContent()
+        contenido.title = "Hay una vacuna pendiente!"
+        contenido.subtitle = "Quierelo, asi como el te quiere a ti"
+        contenido.sound = .default
+        contenido.badge = 1
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+
+        let request = UNNotificationRequest(
+            identifier: UUID().uuidString,
+            content: contenido,
+            trigger: trigger
+        )
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error al agregar la notificación: \(error.localizedDescription)")
+            } else {
+                print("Notificación programada para repetirse cada 5 segundos")
+            }
+        }
+    }
+
+    
+
+}
 
 struct SingleVaccineView: View {
     var item: Vaccine
@@ -56,6 +98,8 @@ struct SingleVaccineView: View {
                 
                 Button(action: {
                     viewModel.addDate(documentID: item.id, newDate: newDate.timeIntervalSince1970)
+                    NotificationManager.instance.agendarNotif()
+
                 }) {
                     Circle()
                         .fill(Color.white)
